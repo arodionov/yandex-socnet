@@ -19,6 +19,6 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
           p:url="${url}"
           p:user="${user}"
           p:pass="${password}"        
-    /> 
+    />    
 
 </beans>

@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -17,16 +19,28 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class FrontControllerServlet extends HttpServlet {
 
-    
+    private ApplicationContext appCtx;
+
+    @Override
+    public void init() {
+        System.out.println("Start Loading Spring Context");
+        String webContext = getServletConfig().getServletName() + ".xml";
+        System.out.println(webContext);
+        String applicationContext = getServletContext().getInitParameter("applicationContext");
+        System.out.println(applicationContext);
+        appCtx = new ClassPathXmlApplicationContext(webContext, applicationContext);
+        System.out.println("Finish Loading Spring Context");
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         String view = null;
-        
+
         System.out.println("processRequest");
 
-        Controller controller = ControllerFactory.getController(request);
+        Controller controller = getController(request);
         try {
             view = controller.handleRequest(request, response);
         } catch (Exception ex) {
@@ -37,18 +51,22 @@ public class FrontControllerServlet extends HttpServlet {
     }
 
     private void dispatch(HttpServletRequest request, HttpServletResponse response, String view) throws ServletException, IOException {
-        String prefix ="/WEB-INF/view/";
-        String sufix =".jsp";
+        String prefix = "/WEB-INF/view/";
+        String sufix = ".jsp";
         System.out.println(prefix + view + sufix);
-        RequestDispatcher dispatcher = 
-                request.getRequestDispatcher(prefix + view + sufix);
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher(prefix + view + sufix);
         dispatcher.forward(request, response);
+    }
+    
+    private Controller getController(HttpServletRequest request) {
+        System.out.println(request.getPathInfo());
+        return appCtx.getBean(request.getPathInfo(), Controller.class);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -62,8 +80,7 @@ public class FrontControllerServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
