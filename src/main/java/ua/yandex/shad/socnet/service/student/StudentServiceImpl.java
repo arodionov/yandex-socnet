@@ -6,6 +6,8 @@
 package ua.yandex.shad.socnet.service.student;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.yandex.shad.socnet.domain.student.Student;
 import ua.yandex.shad.socnet.repository.student.StudentRepository;
 
@@ -13,10 +15,12 @@ import ua.yandex.shad.socnet.repository.student.StudentRepository;
  *
  * @author andrii
  */
+@Service("StudentService")
 public class StudentServiceImpl implements StudentService {
-
+    
     private final StudentRepository repository;
 
+    @Autowired
     public StudentServiceImpl(StudentRepository repository) {
         this.repository = repository;
     }

@@ -13,7 +13,7 @@ import ua.yandex.shad.socnet.repository.jdbc.ConnectionFactory;
 import ua.yandex.shad.socnet.repository.student.StudentRepository;
 import static ua.yandex.shad.socnet.repository.jdbc.DAOJDBCUtil.*;
 
-@Repository("studentDAO")
+@Repository
 public class StudentRepositoryJDBC implements StudentRepository {
 
     @Autowired
