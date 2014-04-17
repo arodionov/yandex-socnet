@@ -8,11 +8,12 @@
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
    
-    <context:component-scan base-package="ua.yandex.shad.socnet.*"/>
+    <context:component-scan base-package="ua.yandex.shad.socnet.service.*"/>
+    <context:component-scan base-package="ua.yandex.shad.socnet.repository.*"/>
     
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="jdbc.properties" />
+          p:location="/WEB-INF/jdbc.properties" />
     
     <bean name="driverManagerDAOFac" class="ua.yandex.shad.socnet.repository.jdbc.DriverManagerDAOJDBCFactory" 
           p:driver="${driver}"

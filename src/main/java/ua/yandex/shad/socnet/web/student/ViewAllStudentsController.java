@@ -7,8 +7,10 @@ package ua.yandex.shad.socnet.web.student;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
 import ua.yandex.shad.socnet.service.student.StudentService;
-import ua.yandex.shad.socnet.web.controller.Controller;
+
 
 /**
  *
@@ -24,12 +26,12 @@ public class ViewAllStudentsController implements Controller {
     }
 
     @Override
-    public String handleRequest(HttpServletRequest request,
+    public ModelAndView handleRequest(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        request.setAttribute("students", studentService.findAll());
+        //request.setAttribute("students", studentService.findAll());
 
-        return "ViewAllStudents";
+        return new ModelAndView("ViewAllStudents", "students", studentService.findAll());
     }
 
 }

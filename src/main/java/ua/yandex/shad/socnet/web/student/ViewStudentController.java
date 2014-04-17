@@ -7,13 +7,15 @@ package ua.yandex.shad.socnet.web.student;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
 import ua.yandex.shad.socnet.service.student.StudentService;
-import ua.yandex.shad.socnet.web.controller.Controller;
 
 /**
  *
  * @author Amdrii
  */
+
 public class ViewStudentController implements Controller{
     
     private final StudentService studentService;
@@ -24,12 +26,13 @@ public class ViewStudentController implements Controller{
     }
 
     @Override
-    public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //System.out.println();
-        Integer id = Integer.parseInt(request.getParameter("studid"));        
-        request.setAttribute("student",studentService.findByID(id));   
+        Integer id = Integer.parseInt(request.getParameter("studid")); 
         
-        return "ViewStudent";
+        //request.setAttribute("student",studentService.findByID(id));   
+        
+        return new ModelAndView("ViewStudent", "student", studentService.findByID(id));
     }
     
 }

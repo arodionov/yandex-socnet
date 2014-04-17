@@ -13,7 +13,7 @@ import ua.yandex.shad.socnet.repository.student.StudentRepository;
 public class StudentDAOJDBCTest extends DAOTestsTemplate{
     
     @Autowired
-    private StudentRepository studentDAO;
+    private StudentRepository studentRepository;
     
     
     @Before
@@ -24,13 +24,13 @@ public class StudentDAOJDBCTest extends DAOTestsTemplate{
     @Test
     public void testCreateStudentNoExceptions() {
         Student stud = new Student("ABC", 1);                
-        studentDAO.create(stud);
+        studentRepository.create(stud);
     }
     
     @Test
     public void testCreateStudent() {
         Student stud = new Student("ABC", 1);                
-        studentDAO.create(stud);
+        studentRepository.create(stud);
         
         int size = jdbcTemplate.queryForObject("select count(*) from Student", Integer.class);
         Assert.assertEquals(1, size);
@@ -40,9 +40,9 @@ public class StudentDAOJDBCTest extends DAOTestsTemplate{
     @Test   
     public void testFindByNameStudent() {
         Student stud = new Student("ABC", 1); 
-        studentDAO.create(stud);
+        studentRepository.create(stud);
         
-        Student actualResult = studentDAO.findByName("ABC");
+        Student actualResult = studentRepository.findByName("ABC");
         Assert.assertEquals(stud, actualResult);
     }
     
@@ -50,10 +50,10 @@ public class StudentDAOJDBCTest extends DAOTestsTemplate{
     public void testFindAllStudents() {  
         Student stud1 = new Student("ABC", 1); 
         Student stud2 = new Student("BC", 2);
-        studentDAO.create(stud1);
-        studentDAO.create(stud2);
+        studentRepository.create(stud1);
+        studentRepository.create(stud2);
         
-        List<Student> actualResult = studentDAO.findAll();
+        List<Student> actualResult = studentRepository.findAll();
         Assert.assertEquals(2, actualResult.size());
     }    
 }

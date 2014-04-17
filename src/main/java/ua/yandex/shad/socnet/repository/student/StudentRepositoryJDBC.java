@@ -1,4 +1,4 @@
-package ua.yandex.shad.socnet.repository.student.jdbc;
+package ua.yandex.shad.socnet.repository.student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ua.yandex.shad.socnet.domain.student.Student;
 import ua.yandex.shad.socnet.repository.jdbc.ConnectionFactory;
-import ua.yandex.shad.socnet.repository.student.StudentRepository;
 import static ua.yandex.shad.socnet.repository.jdbc.DAOJDBCUtil.*;
 
 @Repository
