@@ -1,13 +1,5 @@
 package ua.yandex.shad.socnet.repository.group;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,10 +10,6 @@ import ua.yandex.shad.socnet.repository.jdbc.ConnectionFactory;
 
 import static ua.yandex.shad.socnet.repository.jdbc.DAOJDBCUtil.*;
 
-/**
- *
- * @author andrii
- */
 public class GroupRepositoryJDBC implements GroupRepository{
     private ConnectionFactory cnnFactory;
 

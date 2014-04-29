@@ -16,6 +16,7 @@
         </br>
         
         Student = ${student.studentName} 
-        
+        </br>
+        <a href="viewall"> Back </a>
     </body>
 </html>

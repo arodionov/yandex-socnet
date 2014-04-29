@@ -11,7 +11,7 @@
     <body>
         <h1>Hello World!</h1>
 
-        <a href="<c:url value="/pages/viewall"/>"> View All </a>
+        <a href="<c:url value="/pages/loginpage"/>"> View All </a>
    
     </body>
 </html>

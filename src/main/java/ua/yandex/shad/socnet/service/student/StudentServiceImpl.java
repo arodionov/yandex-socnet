@@ -25,22 +25,27 @@ public class StudentServiceImpl implements StudentService {
         this.repository = repository;
     }
 
+    @Override
     public Student findByID(Integer id) {
         return repository.find(id);
     }
 
+    @Override
     public List<Student> findAll() {
         return repository.findAll();
     }
 
+    @Override
     public boolean create(Student student) {
         return repository.create(student);
     }
 
+    @Override
     public Student findByName(String studentName) {
         return repository.findByName(studentName);
     }
 
+    @Override
     public boolean checkIfExists(Student stud) {
         if (stud == null
                 || stud.getStudentName() == null

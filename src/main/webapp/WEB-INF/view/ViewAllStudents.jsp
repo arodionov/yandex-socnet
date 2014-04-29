@@ -14,6 +14,7 @@
         <title>View All Students</title>
     </head>
     <body>
+        <h1>Hello ${user}</h1>       
         <table border="1">
             <thead><tr>
                     <th>ID</th>
@@ -36,5 +37,7 @@
                 </tr>            
             </c:forEach>
         </table>
+        <a href="createstudent"> Create new student </a> <br/>
+        <a href="logout"> Logout </a> <br/>
     </body>
 </html>
