@@ -13,7 +13,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Component
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
-    
+
     @Autowired
     private UserManager userManager;
 
@@ -22,13 +22,13 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
             HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
         //System.out.println(uri);
-        if (!uri.endsWith("loginpage") && !uri.endsWith("login") && !uri.endsWith("logout")) {           
-            if (!userManager.isLoggedIn()) {
-                response.sendRedirect("loginpage");
-                return false;
-            }
-            //System.out.println(userManager.getUser());
+
+        if (!userManager.isLoggedIn()) {
+            response.sendRedirect("loginpage");
+            return false;
         }
+            //System.out.println(userManager.getUser());
+
         return true;
     }
 }

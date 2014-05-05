@@ -15,6 +15,7 @@
     <servlet-mapping>
         <servlet-name>FrontControllerServlet</servlet-name>
         <url-pattern>/pages/*</url-pattern>
+        <url-pattern>/service/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
