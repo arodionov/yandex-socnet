@@ -4,23 +4,19 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="
-            http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/context 
-            http://www.springframework.org/schema/context/spring-context.xsd"
->
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
    
-    <context:component-scan base-package="ua.yandex.shad.socnet.service.*"/>
-    <context:component-scan base-package="ua.yandex.shad.socnet.repository.*"/>
-    
-    <bean id="propertyConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="/WEB-INF/jdbc.properties" />
+    <!--<context:component-scan base-package="ua.yandex.shad.socnet.repository.*"/>-->
     
     <bean name="studentRepository" class="ua.yandex.shad.socnet.repository.student.StudentRepositoryJDBC">
         <constructor-arg ref="mainDataSource"/>       
-    </bean> 
+    </bean>
+    
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="jdbc.properties" />
     
     <bean id="mainDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
         <property name="driverClass" value="${driver}" />

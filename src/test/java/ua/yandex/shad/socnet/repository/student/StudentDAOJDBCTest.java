@@ -1,4 +1,4 @@
-package ua.yandex.shad.socnet.repository.student.jdbc;
+package ua.yandex.shad.socnet.repository.student;
 
 import java.util.List;
 import org.junit.Assert;
@@ -6,16 +6,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ua.yandex.shad.socnet.domain.student.Student;
-import ua.yandex.shad.socnet.repository.jdbc.DAOTestsTemplate;
-import ua.yandex.shad.socnet.repository.student.StudentRepository;
-
+import ua.yandex.shad.socnet.repository.DAOTestsTemplate;
 
 public class StudentDAOJDBCTest extends DAOTestsTemplate{
     
     @Autowired
     private StudentRepository studentRepository;
-    
-    
+        
     @Before
     public void clearDB(){
         jdbcTemplate.execute("TRUNCATE TABLE Student");
@@ -24,7 +21,16 @@ public class StudentDAOJDBCTest extends DAOTestsTemplate{
     @Test
     public void testCreateStudentNoExceptions() {
         Student stud = new Student("ABC", 1);                
-        studentRepository.create(stud);
+        Assert.assertTrue(studentRepository.create(stud));
+    }
+    
+    @Test
+    public void testCreateStudentThrowAndCatchException() {        
+        Student stud = new Student("ABC", 1);              
+        jdbcTemplate.execute("ALTER TABLE Student ALTER COLUMN name RENAME TO somename");
+        
+        Assert.assertFalse(studentRepository.create(stud));
+        jdbcTemplate.execute("ALTER TABLE Student ALTER COLUMN somename RENAME TO name");
     }
     
     @Test

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.yandex.shad.socnet.domain.student;
 
 /**
@@ -9,9 +5,9 @@ package ua.yandex.shad.socnet.domain.student;
  * @author Amdrii
  */
 public class Student {
-    Integer studentID;
-    String studentName;
-    Integer studentYear;
+    private Integer studentID;
+    private String studentName;
+    private Integer studentYear;
 
     public Student(){
     }
