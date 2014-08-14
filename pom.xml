@@ -38,7 +38,7 @@
             <version>5.1.6</version>
         </dependency>
         
-         <dependency>
+        <dependency>
             <groupId>com.jolbox</groupId>
             <artifactId>bonecp</artifactId>
             <version>0.8.0.RELEASE</version>
@@ -102,18 +102,13 @@
     </dependencies>
     
     <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.6</version>
-            </plugin>
+        <plugins>            
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.7.1.201405082137</version>
             </plugin>
         </plugins>
-    </reporting>    
+    </reporting>  
     
 </project>
