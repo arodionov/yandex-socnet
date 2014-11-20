@@ -63,4 +63,9 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+    @Override
+    public int delete(Integer studentID) {
+        return repository.delete(studentID);
+    }
+
 }

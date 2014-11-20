@@ -16,6 +16,8 @@
         </br>
         
         Student = ${student.studentName} 
+         </br>
+        <a href="delete?studid=${student.studentID}"> Delete </a>
         </br>
         <a href="viewall"> Back </a>
     </body>

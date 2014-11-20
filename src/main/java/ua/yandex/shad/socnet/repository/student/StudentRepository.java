@@ -15,5 +15,7 @@ public interface StudentRepository {
     //boolean upadate(Student student);
     //List<Student> findAllInGroup(Integer groupID);
     //List<Student> findAllInGroup(Group group);
+
+    public int delete(Integer studentID);
     
 }

@@ -19,4 +19,5 @@ public interface StudentService {
     boolean create(Student student);
     Student findByName(String studentName);
     boolean checkIfExists(Student stud);
+    int delete(Integer studentID);
 }

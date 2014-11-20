@@ -15,7 +15,7 @@ import static ua.yandex.shad.socnet.repository.jdbc.DAOJDBCUtil.*;
 @Repository("studentRepository")
 public class StudentRepositoryJDBC implements StudentRepository {
     
-    private DataSource ds;
+    private final DataSource ds;
 
     @Autowired
     public StudentRepositoryJDBC(DataSource ds) {
@@ -128,5 +128,27 @@ public class StudentRepositoryJDBC implements StudentRepository {
         }
 
         return student;
+    }
+
+    @Override
+    public int delete(Integer studentID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Student student = null;
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement("delete from Student where id=?");
+            preparedStatement.setInt(1, studentID);
+            return preparedStatement.executeUpdate();            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(resultSet);
+            close(preparedStatement);
+            close(connection);            
+        }      
+        return 0;
     }
 }
