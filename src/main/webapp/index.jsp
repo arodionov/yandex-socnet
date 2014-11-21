@@ -9,7 +9,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Hello Worlds!</h1>
 
         <a href="<c:url value="/pages/loginpage"/>"> View All </a>
    
