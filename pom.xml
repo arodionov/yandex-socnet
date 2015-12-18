@@ -4,7 +4,7 @@
 
     <groupId>ua.yandex.shad</groupId>
     <artifactId>SocNet</artifactId>
-    <version>1.0</version>
+    <version>${socnet.version}</version>
     <packaging>war</packaging>
 
     <name>SocNet</name>
